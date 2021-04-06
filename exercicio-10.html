@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="base.css">
+  <title>Introdução à Programação - Exercício 10</title>
+</head>
+<body>
+  <h1>Exercício 10</h1>
+  <p>Informe um número para ver sua tabuada de 0 a 10.</p>
+
+  <form id="form" novalidate>
+    <input id="field" type="number" placeholder="Informe um numero">
+
+    <button>Exibir</button>
+
+  </form>
+
+  <div id="result"></div>
+    <script>
+      function onSubmit(event){
+        event.preventDefault()
+
+        let n = parseFloat(field.value)
+
+        field.className = ''
+
+        if (isNaN(n)){
+          result.innerHTML = '<p class="negative">Por Favor, Informe o número corretamente!</p>'
+          field.className = 'negative'
+          field.focus()
+          return
+        }
+
+        result.innerHTML = '<ul>'
+
+        for (let i = 0; i <= 10; i++){
+          let r = i * n
+
+          result.innerHTML += `<li>${i} * ${n} = <strong>${r}</strong></li>`
+        }
+
+          result.innerHTML += '</ul>'
+        }
+
+        form.addEventListener('submit', onSubmit)
+    </script>
+  </body>
+</html>
